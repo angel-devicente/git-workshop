@@ -1,0 +1,40 @@
+* Part 1
+
+** Basics
+mkdir Demo
+cd Demo
+ls -la
+git init
+git status
+touch README.md
+git status
+git add README.md
+git status
+git commit -m "First commit"
+git status
+echo "First line" >> README.md
+git status
+touch test.py
+touch test2.py
+git status
+git add test*
+git status
+git commit -m "Tests added" 
+git status 
+ls -ltr
+git mv test2.py newtest.py
+git status
+git rm test.py
+git status
+git add README.md
+git status
+git commit -m "Moved files around"
+git status
+cd ..
+rm -rf Demo
+
+* Part 2
+
+* Part 3
+
+* Part 4
