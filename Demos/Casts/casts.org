@@ -1,0 +1,272 @@
+* Basics demo (demo-1-1.cast)
+https://asciinema.org/a/Rff5PnrBC79FMI7ThpbWBLX8D
+
+mkdir Demo
+cd Demo
+ls -la
+git init
+git status
+touch README.md
+git status
+git add README.md
+git status
+git commit -m "First commit"
+git status
+echo "First line" >> README.md
+git status
+touch test.py
+touch test2.py
+git status
+git add test*
+git status
+git commit -m "Tests added" 
+git status 
+ls -ltr
+git mv test2.py newtest.py
+git status
+git rm test.py
+git status
+git add README.md
+git status
+git commit -m "Moved files around"
+git status
+
+* Log and diff demo (demo-1-2.cast)
+https://asciinema.org/a/zHPylAmuKN3TWmGhQJiPOidZd
+
+[in git-it-electron; clone it from https://github.com/jlord/git-it-electron.git]
+
+git log
+git log --oneline
+git log --author=Lord
+git log --author=Lord --oneline
+git log --grep=GUI
+git log --since=2019/03/01 
+git log --since=2018/01/27 --until=2018/05/01
+git diff 8b9cdbb82ee242436cd11fdf4853fd06663a8ccd 49bd159ecc535b6f8ebd76e7f672b909359eab9827 
+git diff 8b9cdbb 49bd159
+echo "adding some text" >> README.md
+git diff
+
+* Undoing things (demo-1.3.cast)
+https://asciinema.org/a/Sq5xBDSbbbdJ1AxdZmz755xaJ
+
+[in Demo, created as in demo-1-1.cast]
+
+git commit --amend -m "Moving some files around"
+touch LICENSE
+git add LICENSE
+git commit --amend -m "Moving some files around and added LICENSE"
+git status
+
+touch CONTRIBUTING.md
+git add CONTRIBUTING.md
+git status
+git restore --staged CONTRIBUTING.md
+git status
+
+echo "another line" >> README.md
+git status
+git restore README.md
+
+
+* Practice time
+git clone https://github.com/jlord/git-it-electron.git
+git log --author="Brendan Forster" --oneline | wc -l
+git log --author="Nikolai" --grep=GitHub
+git show ed8202d
+git revert ed8202d
+
+touch BUGS.md
+touch FIXES.md
+
+git add*
+git commit -m "Fixes"
+
+git "adding bugs" >> BUGS.md
+git commit --amend -a -m "Fixes and bugs"
+
+git mv BUGS.md BUGS_FIXES.md
+git rm FIXES.md
+git commit --amend -a -m "Fixes and bugs"
+
+
+
+* Fork and push file to GitHub
+
+Fork git-it-electron from GitHub (https://github.com/jlord/git-it-electron)
+git clone https://github.com/angel-devicente/git-it-electron.git git-it-cp1
+touch FORKED-COPY.md
+git add *
+git commit -m "Added FORKED-COPY.md"
+git push
+
+
+* Pull and fetch/merge (demo-1.4.cast)
+https://asciinema.org/a/9UTZj3TVwXm6jpftZ2ZcOdk5d
+after creating two clones (git-it-cp1 and git-it-cp2) of the fork above
+
+echo "Add line as cp1" >> FORKED-COPY.md
+git commit -a -m "Add line as cp1"
+git push
+
+cd ../git-it-cp2
+git pull
+
+echo "Add line as cp2" >> FORKED-COPY.md
+git commit -a -m "Add line as cp2"
+git push
+
+
+cd ../git-it-cp1
+git fetch
+git merge origin/master
+
+
+* Branches (demo-1-5.cast)
+https://asciinema.org/a/0du1PPZviaW6EoQ7DSATEiAqe
+in git-it-cp1 created and modified above
+
+git branch
+git branch test_branch1
+git checkout test_branch1
+echo "Add line in test_branch1" >> FORKED-COPY.md  
+git commit -a -m "Added line in test_branch1" 
+git checkout master
+
+cat FORKED-COPY.md 
+git branch 
+git log --all --oneline -4
+
+* Tracking branches and "local" remotes (demo-1-6.cast)
+https://asciinema.org/a/wlBMwwJXF24xYPqzfi3QS91SG
+uses git-it-cp1 and git-it-cp2 as created and modified above
+
+git branch --all
+git checkout fix-menu
+cd ../git-it-cp2
+git remote add cp1-local ~/Work/POLMAG/Outreach/Presentations/git-workshop/git-it-cp1
+git remote -vv
+git fetch cp1-local
+git branch --all
+git checkout test_branch1
+git branch --all -vv 
+git checkout fix-menu  (two options, fails)
+git checkout -b fix-menu-cp1 --track cp1-local/fix-menu
+
+* Fast-forward merges (demo-1-7.cast)
+https://asciinema.org/a/ZbFhHkGvVaIGWF3HiF9ZiSyUG
+uses git-it-cp2 as created and modified above
+
+git branch
+git checkout -b hotfix
+echo "Fixing some bug in hotfix" >> FORKED-COPY.md
+git commit -a -m "Fixing bug in hotfix"
+git checkout master
+git branch -vv
+git merge hotfix
+git branch -vv
+
+* No-conflict merge (demo-1-8.cast)
+https://asciinema.org/a/4SIf3zhP3K0ds9I5SdmHXUe8d
+uses git-it-cp2 as created and modified above
+
+git branch
+git checkout -b iss53
+echo "Add function in iss53" >> FORKED-COPY.md
+git commit -a -m "Added function in iss53"
+
+git checkout master
+echo "Add function in master" >> FORKED-COPY.md
+git commit -a -m "Added function in master" 
+git log --graph --all -3
+git merge iss53
+git log --graph --all -3
+
+
+* Merge with conflicts (demo-1-9.cast)
+https://asciinema.org/a/MxjPsupBk3toHCQsOuEQBKbMF
+uses git-it-cp2 as created and modified above
+
+git branch
+git checkout iss53
+echo "another function in iss53" >> FORKED-COPY.md
+git commit -a -m "another function in iss53" 
+
+git checkout master
+echo "another function in master" >> FORKED-COPY.md
+git commit -a -m "another function in master"
+git log --graph --all -5
+git merge iss53
+cat FORKED-COPY.md
+
+[solve the conflict manually in the editor]
+ 
+cat FORKED-COPY.md
+git status
+git commit
+
+git log --graph --all -5 
+
+* Merge with conflicts (GitAhead): https://www.youtube.com/watch?v=W-FHwUwE84M
+
+* Merge with conflicts (Magit):  https://www.youtube.com/watch?v=S86xsx_NzHc
+
+* Practice time (merge with conflicts) (demo-1-10.cast)
+https://asciinema.org/a/1tHAh1ygCDswdlTaG64KPuk91
+uses git-it-cp1 and git-it-cp2 as created and modified above
+
+[starting in git-it-cp1]
+git branch -vv
+git push
+
+cd ../git-it-cp2 
+git branch -vv
+git status
+git push
+git branch -vv
+
+cd ../git-it-cp1
+git pull  
+git branch -vv
+
+cd ../git-it-cp2
+git branch -vv 
+
+[now both are synchronized]
+
+cd ../git-it-cp1 
+echo "Change by cp1" >> FORKED-COPY.md
+git commit -a -m "Change by cp1"
+git push
+
+cd ../git-it-cp2
+echo "Change by cp2" >> FORKED-COPY.md
+git commit -a -m "Change by cp2"
+git push [rejected]
+
+git fetch 
+git merge origin/master [conflicts]
+
+cat FORKED-COPY.md 
+[edit by hand]
+cat FORKED-COPY.md 
+
+git commit -m "Changes by cp1 and cp2. Conflicts solved"
+git status
+git log -4
+git log --graph --oneline -4 
+
+git push
+
+cd ../git-it-cp1
+git branch -vv
+git fetch
+
+git log --oneline -6 
+git log --oneline -6 origin/master
+git merge origin/master
+git log --oneline -6 
+
+[see GitHub is up-to-date]
+
