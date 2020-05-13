@@ -270,3 +270,52 @@ git log --oneline -6
 
 [see GitHub is up-to-date]
 
+
+* Rebasing (as we do in PORTA, to have a nice history) (demo-1-11.cast)
+
+git checkout master
+git branch ra
+git branch rb
+git branch rc
+
+git checkout ra
+touch ra.txt
+git add ra.txt
+git commit -am "Change to branch ra"
+
+git checkout rb
+touch rb.txt
+git add rb.txt
+git commit -am "Change to branch rb"
+
+git checkout rc
+touch rc.txt
+git add rc.txt
+git commit -am "Change to branch rc"
+
+git checkout master
+git log --oneline -4
+git log ra --oneline -4
+git merge ra --no-ff -m "Merging ra, no fast-forward"
+git log --oneline -6 --graph
+
+git log --oneline -4
+git log rb --oneline -4
+git checkout rb
+git rebase master
+git log --graph --oneline -6
+git checkout master
+git merge rb --no-ff -m "Merging rb after rebasing it to master. No
+fast-forward. Clean history"
+git log --graph --oneline -6
+
+git checkout rc
+git rebase master
+git log --graph --oneline -6
+git checkout master
+git merge rc --no-ff -m "Merging rc after rebasing it to master. No
+fast-forward. Clean history"
+git log --graph --oneline -6
+
+
+
