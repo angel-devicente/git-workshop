@@ -1,3 +1,19 @@
+* Asciinema settings
+
+Getting right asciinema settings for my environment was not easy, so I put it
+here.
+
+Basically I have to do:
+  + open new terminal (OK also in byobu, but check the result, sometimes I got
+    ugly underlined lines)
+  + open emacsclient -t (to get colours right outside of byobu I changed
+    'frame-background-mode to 'dark)
+  + make the window size 160x50
+  + asciinema rec -i 1 test ; asciinema play test ; asciinema upload
+    the "-i 1" limits idle time to 1 second, so no gaps.
+  + it should be possible to edit the file to, for example, reduce idle gaps,
+    but not very easily, so for the moment I skip it.
+
 * Basics demo (demo-1-1.cast)
 https://asciinema.org/a/Rff5PnrBC79FMI7ThpbWBLX8D
 
