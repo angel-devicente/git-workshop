@@ -13202,14 +13202,14 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Git-basics">Git basics<a class="anchor-link" href="#Git-basics">&#182;</a></h1><h3 id="&#193;ngel-de-Vicente--(angel.de.vicente@iac.es)">&#193;ngel de Vicente  (<em>angel.de.vicente@iac.es</em>)<a class="anchor-link" href="#&#193;ngel-de-Vicente--(angel.de.vicente@iac.es)">&#182;</a></h3><h4 id="Date:-November-10,--2020">Date: November 10,  2020<a class="anchor-link" href="#Date:-November-10,--2020">&#182;</a></h4>
+<h1 id="Git-basics">Git basics<a class="anchor-link" href="#Git-basics">&#182;</a></h1><h3 id="&#193;ngel-de-Vicente--(angel.de.vicente@iac.es)">&#193;ngel de Vicente  (<em>angel.de.vicente@iac.es</em>)<a class="anchor-link" href="#&#193;ngel-de-Vicente--(angel.de.vicente@iac.es)">&#182;</a></h3><h4 id="Date:-November-13,--2020">Date: November 13,  2020<a class="anchor-link" href="#Date:-November-13,--2020">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="Images/logos/logos.png" style="width: 500px;"/></p>
+<p><img src="Images/logos/logos_eurocc.png" style="width: 900px;"/></p>
 
 </div>
 </div>
@@ -13238,12 +13238,12 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Basic-concepts:">Basic concepts:<a class="anchor-link" href="#Basic-concepts:">&#182;</a></h3><ul>
-<li>What is version control</li>
-<li>What do we version control (text vs. binary files)</li>
-<li>What is a version control system</li>
-<li>You have probably already used a version control system directly or indirectly (e.g. Dropbox, Overleaf, etc.)</li>
-<li>Version control ideas: record/playback, branching, merging</li>
-<li>Benefits of version control systems</li>
+<li>What is version control?</li>
+<li>What do we version control? (text vs. binary files)</li>
+<li>Several version control systems (VCS): (<em>subversion, git, bazaar, ...</em>)</li>
+<li>You have probably already used a VCS directly or indirectly (e.g. Dropbox, Overleaf)</li>
+<li>Version control main concepts: <em>commit/checkout, branching, merging</em></li>
+<li>Main benefits of version control systems: travelling back in time, reproducibility, collaboration</li>
 </ul>
 
 </div>
@@ -13253,7 +13253,7 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Types-of-Version-Control-Systems">Types of Version Control Systems<a class="anchor-link" href="#Types-of-Version-Control-Systems">&#182;</a></h3><ul>
-<li>No VCS (<em>don't be the one doing this!</em>)</li>
+<li><em>Manual</em> VCS (<em>don't be the one doing this!</em>)</li>
 </ul>
 <p><img src="Images/basics/version-control-phdcomics.png" style="width: 30%;"/></p>
 
@@ -13302,10 +13302,13 @@ a.anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> git --version
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash   
+<span class="c1">## %%bash not part of git. Just to be able to execute bash commands live during the presentation</span>
+
+git --version
 </pre></div>
 
     </div>
@@ -13375,10 +13378,12 @@ $ git config --global color.ui <span class="s2">&quot;auto&quot;</span>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> git config --list  ## --show-origin
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+
+git config --list  <span class="c1">## --show-origin</span>
 </pre></div>
 
     </div>
@@ -13435,10 +13440,13 @@ branch.master.merge=refs/heads/master
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> git --help <span class="p">|</span> head -n <span class="m">18</span>
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+<span class="c1">## | head -n 18  to print only the first 18 lines</span>
+
+git --help <span class="p">|</span> head -n <span class="m">18</span>
 </pre></div>
 
     </div>
@@ -13486,7 +13494,9 @@ work on the current change (see also: git help everyday)
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> git status -h
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+
+git add -h <span class="p">|</span> head -n <span class="m">18</span>
 </pre></div>
 
     </div>
@@ -13503,27 +13513,24 @@ work on the current change (see also: git help everyday)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>usage: git status [&lt;options&gt;] [--] &lt;pathspec&gt;...
+<pre>usage: git add [&lt;options&gt;] [--] &lt;pathspec&gt;...
 
+    -n, --dry-run         dry run
     -v, --verbose         be verbose
-    -s, --short           show status concisely
-    -b, --branch          show branch information
-    --show-stash          show stash information
-    --ahead-behind        compute full ahead/behind values
-    --porcelain[=&lt;version&gt;]
-                          machine-readable output
-    --long                show status in long format (default)
-    -z, --null            terminate entries with NUL
-    -u, --untracked-files[=&lt;mode&gt;]
-                          show untracked files, optional modes: all, normal, no. (Default: all)
-    --ignored[=&lt;mode&gt;]    show ignored files, optional modes: traditional, matching, no. (Default: traditional)
-    --ignore-submodules[=&lt;when&gt;]
-                          ignore changes to submodules, optional when: all, dirty, untracked. (Default: all)
-    --column[=&lt;style&gt;]    list untracked files in columns
-    --no-renames          do not detect renames
-    -M, --find-renames[=&lt;n&gt;]
-                          detect renames, optionally set similarity index
 
+    -i, --interactive     interactive picking
+    -p, --patch           select hunks interactively
+    -e, --edit            edit current diff and apply
+    -f, --force           allow adding otherwise ignored files
+    -u, --update          update tracked files
+    --renormalize         renormalize EOL of tracked files (implies -u)
+    -N, --intent-to-add   record only the fact that the path will be added later
+    -A, --all             add changes from all tracked and untracked files
+    --ignore-removal      ignore paths removed in the working tree (same as --no-all)
+    --refresh             don&#39;t add, only refresh the index
+    --ignore-errors       just skip files which cannot be added because of errors
+    --ignore-missing      check if - even missing - files are ignored in dry run
+    --chmod (+|-)x        override the executable bit of the listed files
 </pre>
 </div>
 </div>
@@ -13534,10 +13541,12 @@ work on the current change (see also: git help everyday)
 </div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span> git status --help <span class="p">|</span> head -n <span class="m">22</span>
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+
+git status --help <span class="p">|</span> head -n <span class="m">22</span>
 </pre></div>
 
     </div>
@@ -13652,7 +13661,7 @@ OPTIONS
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
@@ -13679,9 +13688,9 @@ ls -al
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>total 12
-drwxr-xr-x 3 angelv angelv 4096 Oct 28 11:43 .
-drwxr-xr-x 6 angelv angelv 4096 Oct 28 11:43 ..
-drwxr-xr-x 7 angelv angelv 4096 Oct 28 11:43 .git
+drwxr-xr-x 3 angelv angelv 4096 Nov 12 13:45 .
+drwxr-xr-x 7 angelv angelv 4096 Nov 12 13:45 ..
+drwxr-xr-x 7 angelv angelv 4096 Nov 12 13:45 .git
 </pre>
 </div>
 </div>
@@ -13702,7 +13711,7 @@ drwxr-xr-x 7 angelv angelv 4096 Oct 28 11:43 .git
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>%%bash
@@ -13780,7 +13789,7 @@ refs
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Recording-changes-demo">Recording changes demo<a class="anchor-link" href="#Recording-changes-demo">&#182;</a></h3><p><a href="https://asciinema.org/a/Rff5PnrBC79FMI7ThpbWBLX8D?autoplay=1&amp;cols=180&amp;rows=40"><em>demo-1-1.cast</em></a></p>
+<h3 id="Recording-changes-demo">Recording changes demo<a class="anchor-link" href="#Recording-changes-demo">&#182;</a></h3><p><a href="https://asciinema.org/a/AWQng1KOlEOxsCe1qdpadv0sN?autoplay=1&amp;cols=180&amp;rows=40">https://asciinema.org/a/AWQng1KOlEOxsCe1qdpadv0sN?autoplay=1&amp;cols=180&amp;rows=40</a></p>
 
 </div>
 </div>
@@ -13799,7 +13808,7 @@ refs
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Viewing-history-demo">Viewing history demo<a class="anchor-link" href="#Viewing-history-demo">&#182;</a></h3><p><a href="https://asciinema.org/a/zHPylAmuKN3TWmGhQJiPOidZd?autoplay=1&amp;cols=180&amp;rows=40"><em>demo-1-2.cast</em></a></p>
+<h3 id="Viewing-history-demo">Viewing history demo<a class="anchor-link" href="#Viewing-history-demo">&#182;</a></h3><p><a href="https://asciinema.org/a/Kw55lEVlHUFOGauWs8vW0RQ04?autoplay=1&amp;cols=180&amp;rows=40">https://asciinema.org/a/Kw55lEVlHUFOGauWs8vW0RQ04?autoplay=1&amp;cols=180&amp;rows=40</a></p>
 
 </div>
 </div>
@@ -13809,7 +13818,7 @@ refs
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li>Commit messages are important (<em>don't do this</em>)
-<img src="Images/basics/bad_commits.png" style="width: 90%;"/></li>
+<img src="Images/basics/bad_commits.png" style="width: 95%;"/></li>
 </ul>
 
 </div>
@@ -13830,7 +13839,7 @@ refs
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Undoing-things-demo">Undoing things demo<a class="anchor-link" href="#Undoing-things-demo">&#182;</a></h3><p><a href="https://asciinema.org/a/Sq5xBDSbbbdJ1AxdZmz755xaJ?autoplay=1&amp;cols=180&amp;rows=40"><em>demo-1-3.cast</em></a></p>
+<h3 id="Undoing-things-demo">Undoing things demo<a class="anchor-link" href="#Undoing-things-demo">&#182;</a></h3><p><a href="https://asciinema.org/a/llbHbix088FqwazA2Ms7hJZT6?autoplay=1&amp;cols=180&amp;rows=40">https://asciinema.org/a/llbHbix088FqwazA2Ms7hJZT6?autoplay=1&amp;cols=180&amp;rows=40</a></p>
 <ul>
 <li><p>In older versions of <code>git</code>, instead of <code>git restore</code> you would use:</p>
 <ul>
@@ -13901,16 +13910,6 @@ refs
 <li>Magit (for Emacs) <a href="https://magit.vc/">https://magit.vc/</a></li>
 </ul>
 <p><img src="Images/GUIs/magit.png" style="width: 75%;"/></p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Live-mini-demo-with-Magit">Live mini-demo with Magit<a class="anchor-link" href="#Live-mini-demo-with-Magit">&#182;</a></h3><ul>
-<li>See usefulness of hunks (peek into "Intermediate Git")</li>
-</ul>
 
 </div>
 </div>
@@ -14058,7 +14057,7 @@ refs
 </ul>
 </li>
 </ul>
-<p><a href="https://asciinema.org/a/0du1PPZviaW6EoQ7DSATEiAqe?autoplay=1&amp;cols=180&amp;rows=40"><em>demo-1-5.cast</em></a></p>
+<p><a href="https://asciinema.org/a/C8RYb5n0lFitsEw94c2dDifZU?autoplay=1&amp;cols=180&amp;rows=40">https://asciinema.org/a/C8RYb5n0lFitsEw94c2dDifZU?autoplay=1&amp;cols=180&amp;rows=40</a></p>
 
 </div>
 </div>
@@ -14089,7 +14088,7 @@ refs
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="5.-Merging">5. Merging<a class="anchor-link" href="#5.-Merging">&#182;</a></h2>
+<h2 id="4.-Merging">4. Merging<a class="anchor-link" href="#4.-Merging">&#182;</a></h2>
 </div>
 </div>
 </div></section></section><section><section>
@@ -14139,7 +14138,7 @@ refs
 </li>
 </ul>
 <p><img src="Images/merge/basic-branching-5.png" style="width: 42%;"/></p>
-<p><a href="https://asciinema.org/a/ZbFhHkGvVaIGWF3HiF9ZiSyUG?autoplay=1&amp;cols=180&amp;rows=40"><em>demo-1-7.cast</em></a></p>
+<p><a href="https://asciinema.org/a/nhtnwR2msI8sE4TEf2WwryQSU?autoplay=1&amp;cols=180&amp;rows=40">https://asciinema.org/a/nhtnwR2msI8sE4TEf2WwryQSU?autoplay=1&amp;cols=180&amp;rows=40</a></p>
 
 </div>
 </div>
@@ -14183,7 +14182,7 @@ refs
 </ul>
 <p><img src="Images/merge/basic-merging-2.png" style="width: 45%;"/></p>
 <p><strong>Note</strong>: remember that <code>git merge iss53</code> means: merge branch iss53 to my current branch (i.e. you want to issue the merge command with the destination branch checked-out)</p>
-<p><a href="https://asciinema.org/a/4SIf3zhP3K0ds9I5SdmHXUe8d?autoplay=1&amp;cols=180&amp;rows=40"><em>demo-1-8.cast</em></a></p>
+<p><a href="https://asciinema.org/a/9oGkREQonLUPQTkfxZQebdipL?autoplay=1&amp;cols=180&amp;rows=40">https://asciinema.org/a/9oGkREQonLUPQTkfxZQebdipL?autoplay=1&amp;cols=180&amp;rows=40</a></p>
 
 </div>
 </div>
@@ -14214,7 +14213,7 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <ul>
 <li>just edit the file with your usual text editor, leaving the correct resolution (and no markers)</li>
 <li><p>run <code>git commit</code> when all conflicts have been resolved</p>
-<p><a href="https://asciinema.org/a/MxjPsupBk3toHCQsOuEQBKbMF?autoplay=1&amp;cols=180&amp;rows=40"><em>demo-1-9.cast</em></a></p>
+<p><a href="https://asciinema.org/a/kc1x2LpQM0e2g1Jw2EDWGFTHm?autoplay=1&amp;cols=180&amp;rows=40">https://asciinema.org/a/kc1x2LpQM0e2g1Jw2EDWGFTHm?autoplay=1&amp;cols=180&amp;rows=40</a></p>
 </li>
 </ul>
 </li>
@@ -14233,10 +14232,10 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="References">References<a class="anchor-link" href="#References">&#182;</a></h3><ul>
-<li><a href="https://git-scm.com/">Git main page</a></li>
-<li><a href="https://git-scm.com/book/en/v2">Pro Git book</a></li>
-<li><a href="https://ndpsoftware.com/git-cheatsheet.html">Git cheatsheet</a></li>
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
+<li>Git main page: <a href="https://git-scm.com/">https://git-scm.com/</a></li>
+<li>Pro Git book: <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></li>
+<li>Git cheatsheet: <a href="https://ndpsoftware.com/git-cheatsheet.html">https://ndpsoftware.com/git-cheatsheet.html</a></li>
 </ul>
 
 </div>
